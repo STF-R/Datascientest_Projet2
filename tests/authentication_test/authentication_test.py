@@ -16,7 +16,7 @@ api_port = 5002
 #clementine : Y2xlbWVudGluZTptYW5kYXJpbmU=
 usernames = 'alice', 'bob', 'clementine'
 base64encode = 'YWxpY2U6d29uZGVybGFuZA==', 'Ym9iOmJ1aWxkZXI=', 'Y2xlbWVudGluZTptYW5kYXJpbmU='
-expected_results = 200, 200, 403
+expected_results = 200, 200, 401
 for user, encoding, expected_result in zip(usernames, base64encode, expected_results):
     r = requests.get(
             url='http://{address}:{port}/permissions'.format(code64=encoding, address=api_address, port=api_port),
@@ -42,6 +42,7 @@ for user, encoding, expected_result in zip(usernames, base64encode, expected_res
 
     request done at "/permissions"
     | username = {user}
+    | auth_base64_code = {encoding}
     expected result = {expected_result}
     actual result = {status_code}
 
@@ -49,7 +50,7 @@ for user, encoding, expected_result in zip(usernames, base64encode, expected_res
 
     '''
 
-    print(output.format(user=user, expected_result=expected_result, status_code=status_code, test_status=test_status))
+    print(output.format(user=user, encoding=encoding, expected_result=expected_result, status_code=status_code, test_status=test_status))
 
     # impression dans un fichier
     if os.environ.get('LOG') == 1:

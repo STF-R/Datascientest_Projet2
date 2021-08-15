@@ -112,9 +112,10 @@ def v1_test_score():
     else:
         abort(make_response(jsonify({'error': 'check v1 value'}), 400))
 
-@api.route('/v1/sentiment/<sentence>', methods=['GET']) #renvoie le score de sentiment v1 de la phrase proposée
+@api.route('/v1/sentiment', methods=['GET']) #renvoie le score de sentiment v1 de la phrase proposée
 @auth.login_required
-def v1_resp(sentence):
+def v1_resp():
+    sentence = request.args.get('sentence')
     v1,v2 = dico_perms[str(auth.current_user())]
     if v1==1:
         score_v1 = round(score(sentence), 4)
@@ -124,9 +125,10 @@ def v1_resp(sentence):
     else:
         abort(make_response(jsonify({'error': 'check v1 value'}), 400))
 
-@api.route('/v2/sentiment/<sentence>', methods=['GET']) #renvoie le score de sentiment v2 de la phrase proposée
+@api.route('/v2/sentiment', methods=['GET']) #renvoie le score de sentiment v2 de la phrase proposée
 @auth.login_required
-def v2_resp(sentence):
+def v2_resp():
+    sentence = request.args.get('sentence')
     v1,v2 = dico_perms[str(auth.current_user())]
     if v2==1:
         analyzer = SentimentIntensityAnalyzer()

@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-ADD ./requirements.txt ./api.py ./reviews.csv ./credentials.csv ./model1.pkl ./vectorizer.pkl ./model1_test_score.pkl ./
+ADD ./requirements.txt ./api.py ./reviews.csv ./credentials.csv ./model1.pkl ./vectorizer1.pkl ./model1_test_score.pkl ./
 
 RUN apt update && apt install python3-pip libmysqlclient-dev -y && pip install -r requirements.txt
 
