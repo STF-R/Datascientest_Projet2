@@ -1,0 +1,7 @@
+pandas
+Flask
+vaderSentiment
+flask_httpauth
+NLTK
+Sklearn
+Requests

@@ -1,0 +1,41 @@
+version: '3.9'
+services:
+  flask:
+    image: sdereynal/flaskapi-senti:latest
+    container_name: datascientest_flask_from_compose
+    networks: 
+      - senti_network_from_compose
+    ports: 
+      - "5002:5002"
+  test_authenticaton:
+    image: authentication_test_senti:latest
+    container_name: authenticaton_test_senti_from_compose
+    networks: 
+      - senti_network_from_compose
+    environment:
+      LOG: 1
+    volumes:
+      - /home:/home
+        #  test_authorization:
+        #    image: authorization_test_senti:latest
+        #    container_name: authorization_test_senti_from_compose
+        #    networks:
+        #      - senti_network_from_compose
+        #    environment:
+        #      LOG: 1
+        #    volumes:
+        #      - /home:/home
+        #  test_content:
+        #    image: content_test_senti:latest
+        #    container_name: content_test_senti_from_compose
+        #    networks:
+        #      - senti_network_from_compose
+        #    environment:
+        #      LOG: 1
+        #    volumes:
+        #      - /home:/home
+networks:
+    senti_network_from_compose:
+volumes:
+  myapp:
+
