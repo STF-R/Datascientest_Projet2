@@ -54,5 +54,5 @@ for user, encoding, expected_result in zip(usernames, base64encode, expected_res
 
     # impression dans un fichier
     if os.environ.get('LOG') == 1:
-        with open('api_test.log', 'a') as file:
+        with open('/home/api_test.log', 'a') as file:
             file.write(output)

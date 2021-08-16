@@ -1,0 +1,10 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-flaskapi-ingress
+spec:
+  defaultBackend:
+    service:
+      name: my-flaskapi-service
+      port:
+        number: 8001

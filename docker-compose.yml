@@ -15,7 +15,7 @@ services:
     environment:
       LOG: 1
     volumes:
-      - /home:/home
+      - senti_volume:/home
   test_authorization:
     image: authorization_test_senti:latest
     container_name: authorization_test_senti_from_compose
@@ -24,7 +24,7 @@ services:
     environment:
       LOG: 1
     volumes:
-      - /home:/home
+      - senti_volume:/home
   test_content:
     image: content_test_senti:latest
     container_name: content_test_senti_from_compose
@@ -33,9 +33,9 @@ services:
     environment:
       LOG: 1
     volumes:
-      - /home:/home
+      - senti_volume:/home 
 networks:
     senti_network_from_compose:
 volumes:
-  myapp:
+  senti_volume:
 
